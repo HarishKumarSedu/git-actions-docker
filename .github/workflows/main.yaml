@@ -59,4 +59,6 @@ jobs:
           # By default, this argument is set to "web".
           # For more information look at https://devcenter.heroku.com/articles/process-model
           process_type: web
+          usedocker: true
+          docker_heroku_process_type: web
 # This is a basic workflow to help you get started with Actions
