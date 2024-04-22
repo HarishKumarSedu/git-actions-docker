@@ -50,7 +50,7 @@ jobs:
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/simpleapp:latest     
         - name: Run the image in a container
-          uses: addnab/docker-run-action@v3
+          uses: harishkumarshivaramappa/docker-run-action@v3
           with:
             image: ${{ secrets.DOCKERHUB_USERNAME }}/nodejs-demo:latest
             run: |
