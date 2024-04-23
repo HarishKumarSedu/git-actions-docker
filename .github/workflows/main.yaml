@@ -63,26 +63,4 @@ jobs:
         sleep 10
         curl http://127.0.0.1:5000/
 
-  DeployDev:
-    name: Deploy to Dev
-    if: github.event_name == 'pull_request'
-    needs: [Test-Local]
-    runs-on: ubuntu-latest
-    environment:
-      name: Development
-      url: 'https://${{secrets.HEROKU_APP_NAME}}-dev.herokuapp.com/'
-    steps:
-      - name: Deploy
-        run: echo I am deploying ${{secrets.HEROKU_APP_NAME}} at https://${{secrets.HEROKU_APP_NAME}}-dev.herokuapp.com/
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
-          usedocker: true
-          docker_heroku_process_type: web
-          docker_build_args: |
-            FLASK_ENV
-        env:
-          FLASK_ENV: ${{ secrets.FLASK_ENV }}
+  
