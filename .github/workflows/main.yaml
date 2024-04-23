@@ -80,13 +80,16 @@ jobs:
     #     sleep 10
     #     curl http://127.0.0.1:5000/
     
-    - name : Run docker image ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest
-      run  : docker run -d -p 5000:5000 ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest
-        
-    - name: Test application
-      run: |
-        sleep 10
+    - name : Run docker image ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest and Test
+      run  : |
+        docker run -d -p 5000:5000 ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest
         curl http://127.0.0.1:5000/
+      
+        
+    # - name: Test application
+    #   run: |
+    #     sleep 10
+    #     curl http://127.0.0.1:5000/
   DeployDev:
     name: Deploy to Dev
     needs: [Test-Local]
