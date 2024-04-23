@@ -111,3 +111,12 @@ jobs:
           # For more information look at https://devcenter.heroku.com/articles/process-model
           process_type: web
 
+  Test-Remote:
+    name: Test Remote Deployment
+    needs: [DeployDev]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Test application
+      run: |
+        sleep 20
+        curl https://${{secrets.HEROKU_APP_NAME}}-b1e40f16b261.herokuapp.com/
