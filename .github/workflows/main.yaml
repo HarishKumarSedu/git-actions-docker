@@ -69,14 +69,24 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    # - name: Install dependencies
+    #   run: |
+    #     python -m pip install --upgrade pip
+    #     if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+    #     if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    # - name: Test application
+    #   run: |
+    #     FLASK_ENV=${{secrets.FLASK_ENV}} waitress-serve --listen=127.0.0.1:5000 app:app &
+    #     sleep 10
+    #     curl http://127.0.0.1:5000/
+    
+    - name : Run docker image ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest
+      uses: addnab/docker-run-action@v3
+      with:
+        image: ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest
+        
     - name: Test application
       run: |
-        FLASK_ENV=${{secrets.FLASK_ENV}} waitress-serve --listen=127.0.0.1:5000 app:app &
         sleep 10
         curl http://127.0.0.1:5000/
 
