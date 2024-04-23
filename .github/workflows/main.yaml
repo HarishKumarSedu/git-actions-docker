@@ -70,7 +70,6 @@ jobs:
       # url: 'https://${{secrets.HEROKU_APP_NAME}}-dev.herokuapp.com/'
     steps:
       - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
-      - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
