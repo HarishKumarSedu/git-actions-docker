@@ -69,15 +69,15 @@ jobs:
       name: Development
       # url: 'https://${{secrets.HEROKU_APP_NAME}}-dev.herokuapp.com/'
     steps:
-      - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
-        uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
+      - name: Deploy
+        run: echo I am deploying ${{secrets.HEROKU_APP_NAME}} at https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com/
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          email: ${{ secrets.HEROKU_EMAIL }}
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          dockerfile_directory: ./
-          dockerfile_name: Dockerfile
-          docker_options: "--no-cache"
-          process_type: web
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}} #Must be unique in Heroku
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          usedocker: true
+          docker_heroku_process_type: web
           
 
