@@ -93,4 +93,4 @@ jobs:
     - name: Test application
       run: |
         sleep 20
-        curl https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com/
+        curl https://${{secrets.HEROKU_APP_NAME}}-ba56e83be784.herokuapp.com/
