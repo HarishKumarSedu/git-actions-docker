@@ -49,7 +49,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.registery }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest
 
   Test-Local:
     runs-on: ubuntu-latest
