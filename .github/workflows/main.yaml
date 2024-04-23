@@ -69,13 +69,10 @@ jobs:
       name: Development
       # url: 'https://${{secrets.HEROKU_APP_NAME}}-dev.herokuapp.com/'
     steps:
-<<<<<<< HEAD
       - name: Deploy
         run: echo I am deploying ${{secrets.HEROKU_APP_NAME}} at https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com/
       - uses: actions/checkout@v2
-=======
       - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
->>>>>>> 8bd4e398c287ac32899456a67fae39f5e8cf6b7b
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
@@ -83,9 +80,4 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
           docker_heroku_process_type: web
-<<<<<<< HEAD
-=======
-
->>>>>>> 8bd4e398c287ac32899456a67fae39f5e8cf6b7b
-          
 
