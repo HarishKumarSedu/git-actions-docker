@@ -60,7 +60,6 @@ jobs:
         sleep 10
         curl http://127.0.0.1:5000/
 
-### ⬇ IMPORTANT PART ⬇ ###
   DeployDev:
     name: Deploy to Dev
     needs: [Test-Local]
@@ -72,7 +71,6 @@ jobs:
       - name: Deploy
         run: echo I am deploying ${{secrets.HEROKU_APP_NAME}} at https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com/
       - uses: actions/checkout@v2
-      - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
@@ -80,4 +78,8 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
           docker_heroku_process_type: web
+          docker_build_args: |
+            FLASK_ENV
+        env:
+          FLASK_ENV: ${{ secrets.FLASK_ENV }}
 
