@@ -81,7 +81,9 @@ jobs:
     #     curl http://127.0.0.1:5000/
     
     - name : Run docker image ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest
-      run  : docker run -d -p 5000:5000 ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest
+      run  : |
+        docker run -d -p 5000:5000 ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest
+        docker ps 
         
     - name: Test application
       run: |
