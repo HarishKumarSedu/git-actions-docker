@@ -59,7 +59,7 @@ jobs:
         if [ -d tests ] || [ -d test ]; then FLASK_ENV=${{secrets.FLASK_ENV}} python -m pytest; fi
     - name: Test application
       run: |
-        FLASK_ENV=${{secrets.FLASK_ENV}} waitress-serve --listen=127.0.0.1:5000 app:app &
+        FLASK_ENV=${{secrets.FLASK_ENV}} python app.py &
         sleep 10
         curl http://127.0.0.1:5000/
 
