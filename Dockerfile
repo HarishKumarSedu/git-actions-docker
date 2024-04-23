@@ -1,9 +1,6 @@
-FROM python:3.9-slim-buster
+FROM python:3.7
+COPY . /app
 WORKDIR /app
-COPY ./requirements.txt /app
 RUN pip install -r requirements.txt
-COPY . .
-EXPOSE 5000
-ENV FLASK_APP=app.py
-# CMD ["flask", "run", "--host", "0.0.0.0"]
-CMD ["python", "app.py"]
+EXPOSE $PORT
+CMD waitress-serve --listen=127.0.0.1:$PORT app:app
