@@ -82,6 +82,7 @@ jobs:
     
     - name : Run docker image ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest
       run  : |
+        docker pull ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest
         docker run -d -p 5000:5000 ${{ secrets.DOCKERHUB_USERNAME }}/git-actions-docker:latest
         docker ps 
         
