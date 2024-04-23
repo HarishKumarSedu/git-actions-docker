@@ -72,7 +72,7 @@ jobs:
       # url: 'https://${{secrets.HEROKU_APP_NAME}}-dev.herokuapp.com/'
     steps:
       - name: Deploy
-        run: echo I am deploying ${{secrets.HEROKU_APP_NAME}} at https://${{secrets.HEROKU_APP_NAME}}-dev.herokuapp.com/
+        run: echo I am deploying ${{secrets.HEROKU_APP_NAME}} at https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com/
       - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
@@ -93,4 +93,4 @@ jobs:
     - name: Test application
       run: |
         sleep 20
-        curl https://${{env.APP_NAME}}-dev.herokuapp.com/
+        curl https://${{secrets.HEROKU_APP_NAME}}.herokuapp.com/
