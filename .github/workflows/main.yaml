@@ -56,9 +56,9 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test application
       run: |
-        FLASK_ENV=${{secrets.FLASK_ENV}} waitress-serve --listen=127.0.0.1:$PORT app:app &
+        FLASK_ENV=${{secrets.FLASK_ENV}} waitress-serve --listen=127.0.0.1:5000 app:app &
         sleep 10
-        curl http://127.0.0.1:$PORT/
+        curl http://127.0.0.1:5000/
 
 ### ⬇ IMPORTANT PART ⬇ ###
 
