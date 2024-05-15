@@ -12,3 +12,7 @@ Create a new environment
 ```
 conda create -p venv python==3.7 -y
 ```
+build docker image 
+```
+docker build -t harishkumarshivaramappa/flaskapp:latest 
+```
